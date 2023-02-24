@@ -15,9 +15,9 @@ func init() {
 	var err error
 
 	err = godotenv.Load(".env")
-	if err != nil (
+	if err != nil {
 		log.Fatal("failed to load .env file: ", err)
-	)
+	}
 
 	user := os.Getenv("DBUser")
 	password := os.Getenv("DBPassword")
@@ -26,7 +26,7 @@ func init() {
 	database := os.Getenv("DBName")
 
 	Conn, err = sql.Open("postgres",
-		fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", ueer, password, host, post, database)
+		fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", user, password, host, port, database))
 
 	if err != nil {
 		log.Fatal("OpenError: ", err)
@@ -35,5 +35,4 @@ func init() {
 	if err = Conn.Ping(); err != nil {
 		log.Fatal("PingError: ", err)
 	}
-	)
 }
